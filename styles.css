@@ -85,6 +85,7 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    height: 150px;
     width: 350px;
     background-color: white;
     padding: 0.4rem;
@@ -135,12 +136,14 @@ main{
 }
 #container-posts-cards{
     padding: 1rem;
-    display: flex;
+    display: grid;
+    justify-items: center;
+    grid-template-rows: repeat(n,1fr);
+    height: 80vh;
     flex-wrap: wrap;
     gap: 1rem;
     width: 60%;
-    align-items: center;
-    justify-content: center;
+    overflow-y: auto;
 }
 #container-post-selected{
     width: 40%;
@@ -183,4 +186,24 @@ main{
     gap: 10px;
     display: flex;
     flex-direction: column;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(214, 211, 211);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

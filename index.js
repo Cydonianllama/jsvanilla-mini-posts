@@ -9,18 +9,24 @@ var postData = [
     {
         id : 'idpost-1',
         idUser : 'idUser-1',
-        title  : 'title of this post',
-        content : 'this is a comment',
+        title  : 'hola soy un post muy suculento',
+        content : 'es una alegria haber hecho esto ...',
         likes : [] ,
-        comments : [{
+        comments : [
+            {
             idUser : 'idi',
-            comment : 'this is my comment'
-        }]
+            comment : 'no te creo'
+            },
+            {
+                idUser: 'idi',
+                comment: 'yo te creo'
+            }
+        ]
     },
     {
         id: 'idpost-2',
         idUser: 'idUser-1',
-        title: 'title of this post',
+        title: 'este post te hara gritar',
         content: 'this is a comment',
         likes: [],
         comments: []
@@ -28,8 +34,8 @@ var postData = [
     {
         id: 'idpost-3',
         idUser: 'idUser-1',
-        title: 'title of this post',
-        content: 'this is a comment',
+        title: 'quiero ser desarrollador fron end aiuda',
+        content: 'porfa aiudenme',
         likes: [],
         comments: []
     }
@@ -234,12 +240,12 @@ class PostCard {
     }
 
     getTemplate(){
-        let {id, content} = this.data
+        let {id, content,title} = this.data
         let div = document.createElement('div')
         div.classList.add('post-card')
         let template = `
-            <div class="post-card-header">
-                <span>${id}</span>
+            <div class="post-card-header" data-id-post = ${id}>
+                <span>${title}</span>
                 <button class="btn btn-post-card-ocult">ocult</button>
             </div>
             
@@ -339,8 +345,7 @@ class PostComplete {
         div.classList.add('form-comment-post-wrapper')
 
         let template = `
-            ${id}
-            <div class = "form-comment-post">
+            <div class = "form-comment-post" data-id-complete-post = ${id}>
                 <input class="form-input-text input-comment-post" type="text" placeholder="comenta algo" />
                 <button type="button" class="form-button btn-primary btn-add-comment-post">comentar</button>
             </div>
@@ -395,6 +400,7 @@ class PostComplete {
                 let commentData = { comment: comment, idUser: 'current user logged' }
                 postService.comment({idPost : data.id , ...commentData})
                 createComponentComment(containerComments,commentData)
+                inputComment.value = ''
             }
         })
 
